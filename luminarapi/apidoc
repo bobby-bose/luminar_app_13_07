@@ -1,0 +1,11 @@
+register
+==========
+localhost:8000/api/register/
+method:post
+data:username,email,password
+
+token
+=======
+url:localhost:8000/api/token/
+method:post
+data:username,password
