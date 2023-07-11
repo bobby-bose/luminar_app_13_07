@@ -20,7 +20,21 @@ from rest_framework.routers import DefaultRouter
 from luminarapi import views as api_view
 from rest_framework.authtoken.views import ObtainAuthToken
 router=DefaultRouter()
-router.register("api/register",api_view.UsersView,basename="users")
+router.register("api/register",api_view.UsersView,basename="users"),
+router.register("api/courses",api_view.CoursesListView,basename="courses"),
+router.register("api/democlass",api_view.DemoClassListView,basename="courses"),
+router.register("api/details",api_view.DetailsListAPIView,basename="details"),
+router.register("api/modules",api_view.ModulesAPIView,basename="modules"),
+router.register("api/batches",api_view.BatchListView,basename="batches"),
+router.register("api/overview",api_view.OverDetailView,basename="overview"),
+router.register("api/attendance",api_view.AttendanceView,basename="attendance"),
+router.register("api/assignment",api_view.AssignmentView,basename="assignment"),
+router.register("api/announcement",api_view.AnnouncementView,basename="announcement"),
+router.register("api/liveclass",api_view.LiveClassView,basename="liveclass"),
+router.register("api/videoscreen",api_view.VideoScreenView,basename="videoscreen"),
+router.register("api/test",api_view.TestView,basename="test"),
+router.register("api/jobportal",api_view.JobPortalView,basename="jobportal"),
+
 
 
 urlpatterns = [
