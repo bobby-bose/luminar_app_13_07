@@ -2,14 +2,14 @@ from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet,GenericViewSet
 from rest_framework import generics
 from rest_framework.response import Response
-from rest_framework.mixins import ListModelMixin,RetrieveModelMixin,CreateModelMixin
+from rest_framework.mixins import ListModelMixin,RetrieveModelMixin,CreateModelMixin,UpdateModelMixin
 from rest_framework import authentication,permissions
 
 from django.contrib.auth.models import User
 from luminarapi.serializers import UserSerializer,CourseSerializers,DemoSerializers,DetailsSerializer,ModulesSerializer,BatchSerializer,OverviewSerializer,AttendanceSerializer,AssignmentSerializer,AnnouncementSerializer,LiveClassSerializer,VideoScreenSerializer
 from luminarapi.models import Courses,DemoClass,Details,Modules,Batch,Overview,Attendance,Assignment,Announcement,LiveClass,VideoScreen
-from luminarapi.serializers import TestSerializer,JobPortalSerializer
-from luminarapi.models import Test,JobPortal
+from luminarapi.serializers import TestSerializer,JobPortalSerializer,UserProfileSerializer
+from luminarapi.models import Test,JobPortal,Userprofile
 class UsersView(ModelViewSet):
     serializer_class=UserSerializer
     queryset=User.objects.all()
@@ -100,6 +100,18 @@ class JobPortalView(GenericViewSet,CreateModelMixin,ListModelMixin):
     authentication_classes=[authentication.TokenAuthentication]
     permission_classes=[permissions.IsAuthenticated]
     http_method_names=["post","get"]
+class UserProfileView(GenericViewSet, CreateModelMixin, ListModelMixin,UpdateModelMixin):
+    queryset = Userprofile.objects.all()
+    serializer_class = UserProfileSerializer
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+    http_method_names = ["get", "post","put"]
+
+    # def put(self, request, *args, **kwargs):
+    #     return self.update(request,*args,**kwargs)
+    
+        
+
     
 
 

@@ -109,6 +109,15 @@ class JobPortal(models.Model):
     url_link=models.URLField()
     def __str__(self):
         return self.Job_title
+class Userprofile(models.Model):
+    user_name=models.CharField(max_length=300)
+    email=models.EmailField()
+    phone=models.PositiveIntegerField()
+    dob=models.DateField()
+    gender=models.CharField(max_length=100)
+    def __str__(self) :
+        return self.user_name
+
 
 
 
