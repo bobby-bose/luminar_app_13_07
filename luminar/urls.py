@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from rest_framework.routers import DefaultRouter
 from luminarapi import views as api_view
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -40,6 +40,8 @@ router.register("api/userprofile",api_view.UserProfileView,basename="userprofile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("api/token/",ObtainAuthToken.as_view())
+    path("api/token/",ObtainAuthToken.as_view()),
+    path("", include(router.urls)),
+
    
 ]+router.urls

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
 class Courses(models.Model):
     name=models.CharField(max_length=300)
     image=models.ImageField(upload_to="images",null=True,blank=True)
@@ -18,25 +19,32 @@ class DemoClass(models.Model):
 class Details(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
+    duration=models.CharField(max_length=300,default="6 months")
     offline_fees = models.DecimalField(max_digits=10, decimal_places=2)
     online_fees = models.DecimalField(max_digits=10, decimal_places=2)
     thumbnail = models.ImageField(upload_to='thumbnails')
-    # module = models.('Modules', on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.title
 class Modules(models.Model):
     title = models.CharField(max_length=255)
-    description = models.TextField()
+    thumbnail = models.ImageField(upload_to='thumbnails')
     
     
     mod1_text = models.TextField()
     mod2_text = models.TextField()
     mod3_text = models.TextField()
     mod4_text = models.TextField()
-    thumbnail = models.ImageField(upload_to='thumbnails')
-    online_fees = models.DecimalField(max_digits=10, decimal_places=2,default=0)
-    offline_fees = models.DecimalField(max_digits=10, decimal_places=2,default=0)
+    mod5_text = models.TextField(blank=True,null=True)
+    mod6_text = models.TextField(blank=True,null=True)
+    mod7_text = models.TextField(blank=True,null=True)
+    mod8_text = models.TextField(blank=True,null=True)
+    mod9_text = models.TextField(blank=True,null=True)
+    mod10_text = models.TextField(blank=True,null=True)
+   
+   
+    
 
     def __str__(self):
         return self.title
@@ -55,7 +63,7 @@ class Overview(models.Model):
 
     def __str__(self):
         return self.name
-from django.db import models
+
 
 class Attendance(models.Model):
     batch_name = models.CharField(max_length=255)
@@ -117,6 +125,8 @@ class Userprofile(models.Model):
     gender=models.CharField(max_length=100)
     def __str__(self) :
         return self.user_name
+    
+
 
 
 

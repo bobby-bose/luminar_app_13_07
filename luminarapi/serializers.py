@@ -23,7 +23,7 @@ class DetailsSerializer(serializers.ModelSerializer):
     id=serializers.CharField(read_only=True)
     class Meta:
         model = Details
-        fields = ['id', 'title', 'description', 'offline_fees', 'online_fees', 'thumbnail']
+        fields = ['id','title','description','duration','online_fees','offline_fees','thumbnail']
 class ModulesSerializer(serializers.ModelSerializer):
     id=serializers.CharField(read_only=True)
     class Meta:
